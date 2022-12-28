@@ -1,0 +1,35 @@
+{
+  "name": "link-traversal-unecessary-dereference",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "http-server server -p 3010",
+    "demo:q1:traverse": "comunica-sparql-link-traversal -q \"$npm_package_config_query1\" --lenient -l info",
+    "demo:q1": "comunica-sparql http://localhost:3010/data.n3 -q \"$npm_package_config_query1\"",
+    "demo:q2:traverse": "comunica-sparql-link-traversal -q \"$npm_package_config_query2\" --lenient -l info",
+    "demo:q2": "comunica-sparql http://localhost:3010/data.n3 -q \"$npm_package_config_query2\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeswr/link-traversal-unecessary-dereference.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeswr/link-traversal-unecessary-dereference/issues"
+  },
+  "homepage": "https://github.com/jeswr/link-traversal-unecessary-dereference#readme",
+  "dependencies": {
+    "@comunica/query-sparql": "^2.5.2",
+    "@comunica/query-sparql-link-traversal": "^0.0.2-alpha.6.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "config": {
+    "query1": "SELECT ?a ?b ?c WHERE { <http://localhost:3010/data.n3#me> a ?o . GRAPH ?o { ?a ?b ?c } }",
+    "query2": "SELECT ?o WHERE { <http://localhost:3010/data.n3#me> a ?o }"
+  }
+}
